@@ -28,7 +28,7 @@ Each versioned manifest file would be identical to the manifest file in the top-
 of the package repository, with one additional field not required in the repository manifest,
 a URL pointing to the repository and revision in which the version is located.
 
-The 'registry' ``Mason.toml`` would include the additional source field:
+The 'registry' ``0.1.0.toml`` would include the additional source field:
 
 .. code-block:: text
 
