@@ -1,0 +1,9 @@
+
+[brick]
+name = "_MasonTest2"
+version = "0.1.0"
+author = "Sam Partee"
+source = "https://github.com/Spartee/_MasonTest2"
+
+[dependencies]
+_MasonTest1 = "0.1.0"
