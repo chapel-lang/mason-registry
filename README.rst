@@ -1,10 +1,12 @@
 
+
 ==============
 Mason-Registry
 ==============
 
 The mason registry is a GitHub repository containing a list of versioned manifest files.
-This is not unlike that of the OS X Homebrew package manager registry.
+
+`Mason-Registry <https://github.com/chapel-lang/mason-registry>`_.
 
 The registry structure is a hierarchy as follows:
 
@@ -24,9 +26,9 @@ The registry structure is a hierarchy as follows:
       2.2.1.toml
 
 
-Each versioned manifest file would be identical to the manifest file in the top-level directory
-of the package repository, with one additional field not required in the repository manifest,
-a URL pointing to the repository and revision in which the version is located.
+Each versioned manifest file is identical to the manifest file in the top-level directory
+of the package repository, with one exception, a URL pointing to the repository and revision
+in which the version is located.
 
 The 'registry' ``0.1.0.toml`` would include the additional source field:
 
@@ -61,25 +63,22 @@ Submit a package
 ================
 
 The mason registry will hold the manifest files for packages submitted by developers.
-To contribute a package, all a developer has to do is host their package in a git
-repository, write a manifest file (in TOML) with a source field containing the URL to
-the package repository, and open a PR in the mason-registry repository. As soon as 
-trusted chapel developers look at your package and approve it, other users will be able
-to use your package through mason simply by adding the name and version number of your
-package to their project's dependencies 
+To contribute a package to the mason-registry a chapel developer will need to host their
+project and submit a pull request to the mason-registry with the toml file pointing
+to their project. For a more detailed description follow the steps below.
 
-Steps: 
+Steps:
       1) Write a library or binary project in chapel using mason
       2) Host that project in a git repository. (e.g. GitHub)
       3) Create a tag of your package that corresponds to the version number prefixed with a 'v'. (e.g. v0.1.0)
-      4) Fork the Mason-registry.
-      5) Create a branch of the mason registry and add your project's ``Mason.toml`` under ``Bricks/MyPackage/0.1.0.toml.``
-      6) Add a source field to your projects ``Mason.toml`` pointing to your project's repository.
-      7) Open a PR in the mason-registry for your newly created branch.
-      8) Wait for trusted chapel developers to approve the PR.
-      9) Maintain your project and notify chapel developers if taken down. 
+      4) Fork the mason-registry on GitHub
+      5) Create a branch of the mason-registry and add your project's ``Mason.toml`` under ``Bricks/<project_name>/<version>.toml``
+      6) Add a source field to your ``<version>.toml`` pointing to your project's repository.
+      7) Open a PR in the mason-registry for your newly created branch containing just your <version>.toml.
+      8) Wait for mason-registry gatekeepers to approve the PR.
 
-
+Once your package is uploaded, maintain the integrity of your package, and please notify the
+chapel team if your package should be taken down.
 
 
 Namespacing
@@ -88,7 +87,6 @@ Namespacing
 All packages will exist in a single common namespace with a first-come, first-served policy.
 It is easier to go to separate namespaces than to roll them back, so this position affords
 flexibility.
-
 
 
 
