@@ -1,0 +1,9 @@
+
+[brick]
+name = "LinearAlgebraJama"
+version = "0.1.0"
+chplVersion = "1.16.0"
+author = "ct-clmsn"
+source = "https://github.com/ct-clmsn/LinearAlgebraJama"
+
+[dependencies]
