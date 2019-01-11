@@ -1,0 +1,8 @@
+
+[brick]
+name = "NumpyLike"
+version = "0.1.0"
+chplVersion = "1.19.0"
+source="https://gitlab.com/npadmana/numpylike.git"
+
+[dependencies]
