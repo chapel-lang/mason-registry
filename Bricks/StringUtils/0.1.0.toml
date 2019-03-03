@@ -1,0 +1,9 @@
+
+[brick]
+name = "StringUtils"
+version = "0.1.1"
+chplVersion = "1.18.0"
+author = ["Anubhav Ujjawal anubhavujjawal@gmail.com"]
+source="https://github.com/AnubhavUjjawal/Chapel-StringUtils.git"
+
+[dependencies]
