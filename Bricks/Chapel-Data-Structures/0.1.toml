@@ -1,0 +1,5 @@
+[brick]
+name = "Chapel Data Structures"
+version = "0.1"
+author = ["Louis Jenkins <LouisJenkinsCS@hotmail.com>"]
+source = "https://github.com/LouisJenkinsCS/Chapel-Data-Structures"
