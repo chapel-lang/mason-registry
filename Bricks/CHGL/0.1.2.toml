@@ -1,0 +1,9 @@
+
+[brick]
+name = "CHGL"
+version = "0.1.2"
+chplVersion = "1.19.0"
+author = "Louis Jenkins <louis.jenkins@pnnl.gov>"
+source = "https://github.com/pnnl/chgl"
+
+[dependencies]
