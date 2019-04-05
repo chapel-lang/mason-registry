@@ -1,0 +1,8 @@
+[brick]
+name = "UUID"
+version = "0.1.0"
+chplVersion = "1.19.0"
+authors = "Audrey Pratt"
+source = "https://github.com/ajoshpratt/chplUUID"
+
+[dependencies]
