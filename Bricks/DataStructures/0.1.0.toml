@@ -1,5 +1,5 @@
 [brick]
-name = "Chapel Data Structures"
+name = "DataStructures"
 version = "0.1.0"
-author = ["Louis Jenkins <LouisJenkinsCS@hotmail.com>"]
+author = "Louis Jenkins"
 source = "https://github.com/LouisJenkinsCS/Chapel-Data-Structures"
