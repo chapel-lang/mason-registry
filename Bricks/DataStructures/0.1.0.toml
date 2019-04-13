@@ -1,0 +1,6 @@
+[brick]
+name = "DataStructures"
+version = "0.1.0"
+author = "Louis Jenkins"
+source = "https://github.com/LouisJenkinsCS/Chapel-Data-Structures"
+chplVersion = "1.19"
