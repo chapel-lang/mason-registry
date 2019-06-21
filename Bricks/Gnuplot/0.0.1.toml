@@ -1,0 +1,9 @@
+
+[brick]
+name = "Gnuplot"
+version = "0.0.1"
+chplVersion = "1.18.0"
+source = "git@github.com:oplambeck/chapel-gnuplot.git"
+
+[dependencies]
+
