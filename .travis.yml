@@ -7,7 +7,7 @@ compiler:
 matrix:
   include:
     - name : 'toml check'
-    - env : TEST_COMMAND="chpl .tomlCheck.chpl ./.tomlCheck"
+    - env : TEST_COMMAND="./.tomlCheck"
 
 script:
   - (eval "$TEST_COMMAND")
