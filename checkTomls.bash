@@ -9,6 +9,7 @@ func() {
         then
             echo "Found toml for $DIR"
         else
+            echo "Could not find toml for $DIR"
             exit 1
         fi
     fi
