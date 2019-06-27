@@ -4,7 +4,7 @@ os:
 matrix:
   include:
     -name: "checkTomls"
-    -env: TEST_COMMAND="checkTomls"
+    -env: TEST_COMMAND="./checkTomls.bash"
 
 script:
   - (eval "$TEST_COMMAND")
