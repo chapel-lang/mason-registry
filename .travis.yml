@@ -1,0 +1,10 @@
+os:
+  - linux
+
+matrix:
+  include:
+    -name: "checkTomls"
+    -env: TEST_COMMAND="checkTomls"
+
+script:
+  - (eval "$TEST_COMMAND")
