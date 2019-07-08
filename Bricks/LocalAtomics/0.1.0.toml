@@ -1,0 +1,6 @@
+[brick]
+name = "LocalAtomics"
+version = "0.1.0"
+author = "Louis Jenkins"
+source = "https://github.com/LouisJenkinsCS/LocalAtomics"
+chplVersion = "1.19"
