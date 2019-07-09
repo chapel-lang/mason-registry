@@ -1,20 +1,30 @@
 
-use MasonUtils;
 use TOML;
 use FileSystem;
 
-proc checkTomlFormat() {
-
+proc findBricks() {
+  here.chdir(parentDir+ '/Bricks/');
+  const bricks = listdir();
+  for brick in bricks {
+    openTomls(brick);
+  }
 }
 
-proc readToml(brick : string) {
+proc openTomls(brick : string) {
   here.chdir(brick);
   const versions = listdir();
   for file in versions {
     var tomlVersion = open(file, iomode.r);
     var toml = new owned(parseToml(tomlVersion));
-    assert toml['brick'].!isEmpty();
-    assert toml['brick']['name'] == file;
-    
+    checkFormat(brick, toml);
+    tomlVersion.close();
   }
 }
+
+proc checkFormat(brick : string, tomlFile) {
+  var brickHeader = tomlFile['brick'].s;
+  var brickName =  tomlFile['brick']['name'].s;
+  var brickVersion = tomlFile['brick']['version'].s;
+}
+
+findBricks();
