@@ -18,8 +18,11 @@ matrix:
 
 jobs:
   include:
+    - stage: Get
+      env: GET_COMMAND='.util/makeChapel.bash'
+      script: (eval '$GET_COMMAND')
     - stage: Build
-      env: NIGHTLY_TEST_SETTINGS=true QTHREAD_AFFINITY=no HWLOC_HIDE_ERRORS=1 CHPL_SMOKE_SKIP_DOC=true BUILD_COMMAND="./util/makeChapel.bash &&  ./util/buildRelease/smokeTest"
+      env: NIGHTLY_TEST_SETTINGS=true QTHREAD_AFFINITY=no HWLOC_HIDE_ERRORS=1 CHPL_SMOKE_SKIP_DOC=true BUILD_COMMAND="./util/buildRelease/smokeTest"
       script: (eval "$BUILD_COMMAND")
     - stage: Test
       script: (eval "$TEST_COMMAND")
