@@ -6,4 +6,3 @@ ls
 source util/quickstart/setchplenv.bash
 make -j 4 CHPL_REGEXP=re2
 sudo make install
-
