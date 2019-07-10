@@ -12,3 +12,4 @@ jobs:
     - stage: Test
       env: TEST_COMMAND='chpl tomlContentCheck.chpl && ./tomlContentCheck'
       script: (eval "$TEST_COMMAND")
+sudo: true
