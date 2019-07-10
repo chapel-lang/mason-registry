@@ -8,3 +8,4 @@ CHPL_BIN_SUBDIR=`"$CHPL_HOME"/util/chplenv/chpl_bin_subdir.py`
 export PATH="$PATH":"$CHPL_HOME/bin/$CHPL_BIN_SUBDIR"
 export MANPATH="$MANPATH":"$CHPL_HOME"/man
 make install
+chpl --help
