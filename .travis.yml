@@ -10,5 +10,9 @@ matrix:
     - name: "make chapel"
       env: TEST_COMMAND="./util/makeChapel.bash"
 
+  include:
+    - name: "check tomlContent"
+      env: TEST_COMMAND="chpl tomlContentCheck.chpl $$ ./tomlContentCheck"
+
 script:
   - (eval "$TEST_COMMAND")
