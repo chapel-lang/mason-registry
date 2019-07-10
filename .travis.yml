@@ -5,21 +5,20 @@ compiler:
   - gcc
 
 matrix:
-  jobs:
-    stage: Build
-      include:
-        - name: "make check"
-          env: NIGHTLY_TEST_SETTINGS=true QTHREAD_AFFINITY=no HWLOC_HIDE_ERRORS=1 CHPL_SMOKE_SKIP_DOC=true TEST_COMMAND="./util/makeChapel.bash &&  ./util/buildRelease/smokeTest"
-    stage: Check
-      include:
-        - name: "check tomlContent"
-          env: TEST_COMMAND="chpl ./util/tomlContentCheck.chpl $$ ./util/tomlContentCheck"
-      include:
-        - name: "checkTomls"
-          env: TEST_COMMAND="./util/checkTomls.bash"
+  include:
+    - name: "make check"
+      env: NIGHTLY_TEST_SETTINGS=true QTHREAD_AFFINITY=no HWLOC_HIDE_ERRORS=1 CHPL_SMOKE_SKIP_DOC=true BUILD_COMMAND="./util/makeChapel.bash &&  ./util/buildRelease/smokeTest"
+  include:
+    - name: "check tomlContent"
+      env: TEST_COMMAND="chpl ./util/tomlContentCheck.chpl $$ ./util/tomlContentCheck"
+  include:
+    - name: "checkTomls"
+      env: TEST_COMMAND="./util/checkTomls.bash"
 
-stages:
-  -Build
-  -Check
-script:
-  - (eval "$TEST_COMMAND")
+
+jobs:
+  include:
+    - stage: Build
+      script: (eval "$BUILD_COMMAND")
+    - stage: Test
+      script: (eval "$TEST_COMMAND")
