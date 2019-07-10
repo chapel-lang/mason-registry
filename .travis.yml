@@ -5,13 +5,21 @@ compiler:
   - gcc
 
 matrix:
-  include:
-    - name: "checkTomls"
-      env: TEST_COMMAND="./util/checkTomls.bash"
+  jobs:
+    stage: Build
+      include:
+        - name: "make check"
+          env: NIGHTLY_TEST_SETTINGS=true QTHREAD_AFFINITY=no HWLOC_HIDE_ERRORS=1 CHPL_SMOKE_SKIP_DOC=true TEST_COMMAND="./util/makeChapel.bash &&  ./util/buildRelease/smokeTest"
+    stage: Check
+      include:
+        - name: "check tomlContent"
+          env: TEST_COMMAND="chpl ./util/tomlContentCheck.chpl $$ ./util/tomlContentCheck"
+      include:
+        - name: "checkTomls"
+          env: TEST_COMMAND="./util/checkTomls.bash"
 
-  include:
-    - name: "check tomlContent"
-      env: TEST_COMMAND="./util/makeChapel.bash && chpl ./util/tomlContentCheck.chpl $$ ./util/tomlContentCheck"
-
+stages:
+  -Build
+  -Check
 script:
   - (eval "$TEST_COMMAND")
