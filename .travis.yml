@@ -7,12 +7,8 @@ matrix:
       env: TEST_COMMAND="./util/checkTomls.bash"
 
   include:
-    - name: "make chapel"
-      env: TEST_COMMAND="./util/makeChapel.bash"
-
-  include:
     - name: "check tomlContent"
-      env: TEST_COMMAND="chpl tomlContentCheck.chpl $$ ./tomlContentCheck"
+      env: TEST_COMMAND="./util/makeChapel.bash && chpl ./util/tomlContentCheck.chpl $$ ./util/tomlContentCheck"
 
 script:
   - (eval "$TEST_COMMAND")
