@@ -7,7 +7,3 @@ cd chapel
 source util/quickstart/setchplenv.bash
 make -j 4 CHPL_REGEXP=re2
 sudo make install
-cd ..
-cd mason-registry/util
-chpl tomlContentCheck.chpl
-./tomlContentChecl
