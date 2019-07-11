@@ -7,3 +7,4 @@ cd chapel
 source util/quickstart/setchplenv.bash
 make -j 4 CHPL_REGEXP=re2
 sudo make install
+chpl -o hello examples/hello.chpl
