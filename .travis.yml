@@ -7,9 +7,9 @@ compiler:
 jobs:
   include:
     - stage: Get
-      env: GET_COMMAND='./util/makeChapel.bash'
+      env: GET_COMMAND='./util/makeChapel.bash ;  ./util/tomlContentCheck.chpl"
       script: (eval '$GET_COMMAND')
     - stage: Test
-      env: TEST_COMMAND='chpl tomlContentCheck.chpl && ./tomlContentCheck'
+      env: TEST_COMMAND=' ./util/tomlContentCheck'
       script: (eval "$TEST_COMMAND")
 sudo: true
