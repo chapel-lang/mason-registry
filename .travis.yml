@@ -7,9 +7,9 @@ compiler:
 jobs:
   include:
     - stage: Get
-      env: GET_COMMAND='./util/makeChapel.bash ;  ./util/tomlContentCheck.chpl"
+      env: GET_COMMAND='./util/makeChapel.bash'
       script: (eval '$GET_COMMAND')
-    - stage: Test
-      env: TEST_COMMAND=' ./util/tomlContentCheck'
+    - stage: Make
+      env: NIGHTLY_TEST_SETTINGS=true QTHREAD_AFFINITY=no HWLOC_HIDE_EDDORS=1 CHPL_SMOKE_SKIP_DOC=true MAKE_COMMAnd='./../chapel/util/buildRelease/smokeTest'
       script: (eval "$TEST_COMMAND")
 sudo: true
