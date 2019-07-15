@@ -10,6 +10,6 @@ jobs:
       env: GET_COMMAND='./util/makeChapel.bash'
       script: (eval '$GET_COMMAND')
     - stage: Make
-      env: NIGHTLY_TEST_SETTINGS=true QTHREAD_AFFINITY=no HWLOC_HIDE_EDDORS=1 CHPL_SMOKE_SKIP_DOC=true MAKE_COMMAND='ls'
+      env: NIGHTLY_TEST_SETTINGS=true QTHREAD_AFFINITY=no HWLOC_HIDE_EDDORS=1 CHPL_SMOKE_SKIP_DOC=true MAKE_COMMAND='./../chapel/util/buildRelease/smokeTest'
       script: (eval "$MAKE_COMMAND")
 sudo: true
