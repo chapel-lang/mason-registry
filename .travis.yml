@@ -7,7 +7,7 @@ compiler:
 matrix:
   include:
     - name: "get chapel"
-      env: MAKE_COMMAND='git clone --depth=50 --branch=release/1.19 https://github.com/chapel-lang/chapel.git ls'
+      env: MAKE_COMMAND='git clone --depth=50 --branch=release/1.19 https://github.com/chapel-lang/chapel.git'
 
     - name: "make check"
       env: NIGHTLY_TEST_SETTINGS=true QTHREAD_AFFINITY=no HWLOC_HIDE_EDDORS=1 CHPL_SMOKE_SKIP_DOC=true TEST_COMMAND='./chapel/util/buildRelease/smokeTest'
