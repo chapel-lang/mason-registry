@@ -8,9 +8,11 @@ matrix:
   include:
     - name: "get chapel"
       env: TEST_COMMAND='./util/makeChapel.bash'
+
     - name: "make check"
       env: NIGHTLY_TEST_SETTINGS=true QTHREAD_AFFINITY=no HWLOC_HIDE_EDDORS=1 CHPL_SMOKE_SKIP_DOC=true TEST_COMMAND='./util/chapel/util/buildRelease/smokeTest'
-      - name: "make check-chpldoc && make docs"
+
+    - name: "make check-chpldoc && make docs"
       env: NIGHTLY_TEST_SETTINGS=true CHPL_SMOKE_SKIP_MAKE_CHECK=true TEST_COMMAND="./util/buildRelease/smokeTest"
 
     - name: "check annotations"
