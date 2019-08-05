@@ -4,7 +4,7 @@ os:
 compiler:
   - gcc
 
-matrix:
+jobs:
   include:
     - stage: make
       name: "get chapel"
