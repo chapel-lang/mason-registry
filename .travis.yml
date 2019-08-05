@@ -6,21 +6,26 @@ compiler:
 
 matrix:
   include:
-    - name: "get chapel"
+    - stage: make
+      name: "get chapel"
       env: MAKE_COMMAND='git clone --depth=50 --branch=release/1.19 https://github.com/chapel-lang/chapel.git'
 
-    - name: "make check"
+    - stage: test
+      name: "make check"
       env: NIGHTLY_TEST_SETTINGS=true QTHREAD_AFFINITY=no HWLOC_HIDE_EDDORS=1 CHPL_SMOKE_SKIP_DOC=true TEST_COMMAND='./chapel/util/buildRelease/smokeTest'
 
-    - name: "make check-chpldoc && make docs"
+    - stage: test
+      name: "make check-chpldoc && make docs"
       env: NIGHTLY_TEST_SETTINGS=true CHPL_SMOKE_SKIP_MAKE_CHECK=true TEST_COMMAND="./chapel/util/buildRelease/smokeTest"
 
-    - name: "check annotations"
+    - stage: test
+      name: "check annotations"
       env: TEST_COMMAND="make test-venv && CHPL_HOME=$PWD ./chapel/util/run-in-venv.bash ./chapel/util/test/check_annotations.py"
       git:
         depth: 100000
 
-    - name: "look for bad runtime calls"
+    - stage: test
+      name: "look for bad runtime calls"
       env: TEST_COMMAND="./chapel/util/devel/lookForBadRTCalls"
       addons:
         apt:
