@@ -7,21 +7,21 @@ compiler:
 matrix:
   include:
     - name: "get chapel"
-      env: TEST_COMMAND='./util/makeChapel.bash'
+      env: TEST_COMMAND='git clone --depth=50 --branch=release/1.19 https://github.com/chapel-lang/chapel.git'
 
     - name: "make check"
-      env: NIGHTLY_TEST_SETTINGS=true QTHREAD_AFFINITY=no HWLOC_HIDE_EDDORS=1 CHPL_SMOKE_SKIP_DOC=true TEST_COMMAND='./util/chapel/util/buildRelease/smokeTest'
+      env: NIGHTLY_TEST_SETTINGS=true QTHREAD_AFFINITY=no HWLOC_HIDE_EDDORS=1 CHPL_SMOKE_SKIP_DOC=true TEST_COMMAND='./chapel/util/chapel/util/buildRelease/smokeTest'
 
     - name: "make check-chpldoc && make docs"
-      env: NIGHTLY_TEST_SETTINGS=true CHPL_SMOKE_SKIP_MAKE_CHECK=true TEST_COMMAND="./util/buildRelease/smokeTest"
+      env: NIGHTLY_TEST_SETTINGS=true CHPL_SMOKE_SKIP_MAKE_CHECK=true TEST_COMMAND="./chapel/util/buildRelease/smokeTest"
 
     - name: "check annotations"
-      env: TEST_COMMAND="make test-venv && CHPL_HOME=$PWD ./util/run-in-venv.bash ./util/test/check_annotations.py"
+      env: TEST_COMMAND="make test-venv && CHPL_HOME=$PWD ./chapel/util/run-in-venv.bash ./chapel/util/test/check_annotations.py"
       git:
         depth: 100000
 
     - name: "look for bad runtime calls"
-      env: TEST_COMMAND="./util/devel/lookForBadRTCalls"
+      env: TEST_COMMAND="./chapel/util/devel/lookForBadRTCalls"
       addons:
         apt:
           packages:
