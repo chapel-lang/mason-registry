@@ -1,3 +1,4 @@
-module main() {
+
+module test {
   writeln('Passed!');
 }
