@@ -1,4 +1,4 @@
 
-module test {
+module compileCHPL {
   writeln('Passed!');
 }

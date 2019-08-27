@@ -6,5 +6,5 @@ source util/quickstart/setchplenv.bash
 export CHPL_REGEXP=re2
 make -j 4
 make check
-chpl ../test.chpl
-./test
+chpl ../compileCHPL.chpl
+./compileCHPL
