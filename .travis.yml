@@ -4,44 +4,14 @@ os:
 compiler:
   - gcc
 
-
-stages:
-  - compile
-  - test
-
 jobs:
   include:
-    - stage: compile
-      name: "get chapel"
-      env: TEST_COMMAND='git clone --depth=10 --branch=release/1.19 https://github.com/chapel-lang/chapel.git'
+    - stage: Get
+      env: GET_COMMAND='./util/makeChapel.bash'
+      script: (eval '$GET_COMMAND')
+    - stage: Make
+      env: NIGHTLY_TEST_SETTINGS=true QTHREAD_AFFINITY=no HWLOC_HIDE_EDDORS=1 CHPL_SMOKE_SKIP_DOC=true MAKE_COMMAnd='./../chapel/util/buildRelease/smokeTest'
+      script: (eval "$TEST_COMMAND")
 
-    - stage: test
-      name: "make check"
-      env: NIGHTLY_TEST_SETTINGS=true QTHREAD_AFFINITY=no HWLOC_HIDE_EDDORS=1 CHPL_SMOKE_SKIP_DOC=true TEST_COMMAND='./chapel/util/buildRelease/smokeTest'
-
-    - stage: test
-      name: "make check-chpldoc && make docs"
-      env: NIGHTLY_TEST_SETTINGS=true CHPL_SMOKE_SKIP_MAKE_CHECK=true TEST_COMMAND="./chapel/util/buildRelease/smokeTest"
-
-    - stage: test
-      name: "check annotations"
-      env: TEST_COMMAND="make test-venv && CHPL_HOME=$PWD ./chapel/util/run-in-venv.bash ./chapel/util/test/check_annotations.py"
-      git:
-        depth: 100000
-
-    - stage: test
-      name: "look for bad runtime calls"
-      env: TEST_COMMAND="./chapel/util/devel/lookForBadRTCalls"
-      addons:
-        apt:
-          packages:
-          - cscope
-
-script:
-  - stage: make
-    script: (eval "$MAKE_COMMAND")
-  - stage: test
-    script: (eval "$TEST_COMMAND")
-
-sudo: false
+sudo: true
 
