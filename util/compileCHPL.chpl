@@ -1,4 +1,0 @@
-
-module compileCHPL {
-  writeln('Passed!');
-}
