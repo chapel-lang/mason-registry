@@ -15,7 +15,7 @@ cd ../../..
 
 # Parses the last merge commit, getting the most recent package added to the registry
 package=$(git log -m -1 --name-only --pretty="format:")
-cd $package
+cd $(dirname $package + .end)
 # grabs the source from the toml
 source="$(grep source "$package" | cut -d= -f2)"
 sed -e 's/^"//' -e 's/"$//' <<<"$source"
