@@ -9,8 +9,8 @@ make check
 cd tools/mason
 make install
 cd ../..
-chpl ../compileCHPL.chpl -M chapel/tools/mason
-./compileCHPL
+chpl ../compileCHPL.chpl
+./compileCHPLi
 
 
 package=$(git log -m -1 --name-only --pretty="format:")
