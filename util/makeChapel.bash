@@ -12,6 +12,7 @@ cd ../../..
 
 
 package=$(git log -m -1 --name-only --pretty="format:")
+touch source
 awk -F= '/source/ { print $2 > source }' $package
 cat source.txt
 
