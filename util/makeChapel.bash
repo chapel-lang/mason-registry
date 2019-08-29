@@ -16,7 +16,7 @@ touch source
 awk -F= '/source/ { print $2 > "source" }' $package
 packageReg=$(cat source)
 cd package
-git clone $packageReg 'newPackage'
+git clone $packageReg
 cd newPackage
 mason publish --check --travis
 

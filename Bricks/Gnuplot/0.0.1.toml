@@ -7,4 +7,4 @@ chplVersion = "1.18.0"
 source = "git@github.com:oplambeck/chapel-gnuplot.git"
 
 [dependencies]
-lastchanged = 'tru e '
+lastchanged = 'true '
