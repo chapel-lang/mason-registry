@@ -12,12 +12,11 @@ cd ../../..
 
 
 package=$(git log -m -1 --name-only --pretty="format:")
-touch source
-awk -F= '/source/ { print $2 > "source" }' $package
-packageReg=$(cat source)
+source=$(grep source $package | cut -d= -f2)
+packageReg=$(cat $source)
 cd package
 echo $packageReg
-git clone $packageReg
+git clone $packageReg newPackage
 cd newPackage
 mason publish --check --travis
 
