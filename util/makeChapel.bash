@@ -11,3 +11,4 @@ make install
 cd ../..
 chpl ../compileCHPL.chpl
 ./compileCHPL
+git status
