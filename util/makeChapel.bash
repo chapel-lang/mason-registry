@@ -12,8 +12,8 @@ cd ../../..
 
 
 package=$(git log -m -1 --name-only --pretty="format:")
-source=$(awk -F= '/source/ { echo $2 }' $package)
-echo $source
+awk -F= '/source/ { echo $2 }' $package
+echo $2
 git clone $source
 
 
