@@ -13,13 +13,14 @@ cd tools/mason
 make install
 cd ../../..
 
-
+# Parses the last merge commit, getting the most recent package added to the registry
 package=$(git log -m -1 --name-only --pretty="format:")
-echo $package
+# grabs the source from the toml
 source=$(grep source $package | cut -d= -f2)
-echo $source
+#clones the source
 git clone $source newPackage
 cd newPackage
+#runs mason publish --check --travis on the package
 mason publish --check --travis
 
 
