@@ -15,7 +15,7 @@ package=$(git log -m -1 --name-only --pretty="format:")
 touch source
 awk -F= '/source/ { print $2 > "source" }' $package
 packageReg=$(cat source)
-git clone $packageReg as 'newPackage' 
+git clone $packageReg 'newPackage' 
 cd package
 cd newPackage
 mason publish --check --travis
