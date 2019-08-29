@@ -14,6 +14,10 @@ cd ../../..
 package=$(git log -m -1 --name-only --pretty="format:")
 touch source
 awk -F= '/source/ { print $2 > "source" }' $package
-cat source
+packageReg=$(cat source)
+git clone $packageReg newestPackage
+cd newestPackage
+mason publish --check --travis
+
 
 
