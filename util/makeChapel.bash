@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-git clone --depth=50 --branch=release/1.19 https://github.com/chapel-lang/chapel.git
+git clone --depth=50 --branch=master https://github.com/chapel-lang/chapel.git
 cd chapel
 source util/quickstart/setchplenv.bash
 export CHPL_REGEXP=re2
