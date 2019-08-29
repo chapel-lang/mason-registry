@@ -18,10 +18,9 @@ package=$(git log -m -1 --name-only --pretty="format:")
 cd $package
 # grabs the source from the toml
 source="$(grep source "$package" | cut -d= -f2)"
-temp="${source%\"}"
-temp="${temp#\"}"
+sed -e 's/^"//' -e 's/"$//' <<<"$source"
 #clones the source
-git clone $temp newPackage
+git clone "$source" newPackage
 cd newPackage
 #runs mason publish --check --travis on the package
 mason publish --check --travis
