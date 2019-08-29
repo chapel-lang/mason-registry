@@ -6,5 +6,8 @@ source util/quickstart/setchplenv.bash
 export CHPL_REGEXP=re2
 make -j 4
 make check
-chpl ../compileCHPL.chpl
+cd tools/mason
+make install
+cd ../..
+chpl /compileCHPL.chpl
 ./compileCHPL
