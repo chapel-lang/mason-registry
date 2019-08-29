@@ -14,6 +14,8 @@ chpl ../compileCHPL.chpl -M chapel/tools/mason
 
 
 package=$(git log -m -1 --name-only --pretty="format:")
+cd $package
+
 
 
 
