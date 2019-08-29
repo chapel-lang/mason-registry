@@ -9,5 +9,5 @@ make check
 cd tools/mason
 make install
 cd ../..
-chpl compileCHPL.chpl
+chpl ../compileCHPL.chpl
 ./compileCHPL
