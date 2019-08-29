@@ -10,7 +10,7 @@ cd tools/mason
 make install
 cd ../..
 chpl ../compileCHPL.chpl
-./compileCHPLi
+./compileCHPL
 
 
 package=$(git log -m -1 --name-only --pretty="format:")
