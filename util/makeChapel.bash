@@ -12,7 +12,7 @@ cd ../../..
 
 
 package=$(git log -m -1 --name-only --pretty="format:")
-awk -F= '/source/ { print $2 > source.txt }' $package
+awk -F= '/source/ { print $2 > source }' $package
 cat source.txt
 
 
