@@ -8,9 +8,7 @@ make -j 4
 make check
 cd tools/mason
 make install
-cd ../..
-chpl ../compileCHPL.chpl
-./compileCHPL
+cd ../../..
 
 
 package=$(git log -m -1 --name-only --pretty="format:")
