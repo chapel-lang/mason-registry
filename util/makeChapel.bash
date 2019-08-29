@@ -14,7 +14,7 @@ cd ../../..
 package=$(git log -m -1 --name-only --pretty="format:")
 source=$(grep source $package | cut -d= -f2)
 packageReg=$(cat $source)
-cd package
+cd $package
 echo $packageReg
 git clone $packageReg newPackage
 cd newPackage
