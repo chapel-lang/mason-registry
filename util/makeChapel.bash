@@ -34,7 +34,7 @@ temp="${temp#\"}"
 fixed="$temp"
 #clones the source
 echo $fixed
-git clone "$fixed" newPackage
+git clone $fixed newPackage
 cd newPackage
 #runs mason publish --check --travis on the package
 mason publish --check --travis
