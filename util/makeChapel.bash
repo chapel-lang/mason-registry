@@ -11,7 +11,7 @@ make -j 4
 make check
 cd tools/mason
 make install
-cd ../../../..
+cd ../../../
 pwd
 
 # Parses the last merge commit, getting the most recent package added to the registry
