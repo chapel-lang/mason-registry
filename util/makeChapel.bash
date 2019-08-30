@@ -21,6 +21,7 @@ end=".end"
 path="$package$end"
 cd $(dirname $path)
 # grabs the source from the toml
+echo $package
 source="$(grep source "$package" | cut -d= -f2)"
 #strips the quotes off of the source
 fixed=$(sed -e 's/^"//' -e 's/"$//' <<<"$source")
