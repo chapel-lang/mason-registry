@@ -31,6 +31,7 @@ source="$(grep source "$f" | cut -d= -f2)"
 #strips the quotes off of the source
 fixed=$(sed -e 's/^"//' -e 's/"$//' <<<"$source")
 #clones the source
+echo $fixed
 git clone $fixed newPackage
 cd newPackage
 #runs mason publish --check --travis on the package
