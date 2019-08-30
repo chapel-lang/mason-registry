@@ -1,13 +1,10 @@
-language: c
 os:
-  - linux
-compiler:
-  - gcc
+   - linux
+matrix:
+   include:
+     - name: "checkTomls"
+       env: TEST_COMMAND="./checkTomls.bash"
 
-jobs:
-  include:
-    - stage: Get
-      env: GET_COMMAND='./util/travisScript.bash'
-      script: (eval '$GET_COMMAND')
-sudo: true
+script:
+   - (eval "$TEST_COMMAND")
 
