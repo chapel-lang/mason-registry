@@ -8,8 +8,7 @@ buildChapel {
   cd chapel
   source util/quickstart/setchplenv.bash
   export CHPL_REGEXP=re2
-  make
-}
+  make }
 
 # Runs a make check, and if it passes then makes mason
 makeCheckAndMason {
@@ -19,8 +18,7 @@ makeCheckAndMason {
     make mason
   else
     exit 1
-  fi
-}
+  fi }
 
 # Parses the last merge commit, getting the most recent package added to the registry
 checkPackage {
@@ -40,8 +38,7 @@ checkPackage {
 
   # Clones the source
   git clone $fixed newPackage
-  cd newPackage
-}
+  cd newPackage }
 
 buildChapel
 
