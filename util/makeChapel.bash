@@ -12,9 +12,11 @@ make check
 cd tools/mason
 make install
 cd ../../../..
+pwd
 
 # Parses the last merge commit, getting the most recent package added to the registry
 package=$(git log -m -1 --name-only --pretty="format:")
+pwd
 end=".end"
 path="$package$end"
 cd $(dirname $path)
