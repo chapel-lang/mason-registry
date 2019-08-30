@@ -32,7 +32,7 @@ source="$(grep source "$f" | cut -d= -f2)"
 fixed=$(sed -e 's/^"//' -e 's/"$//' <<<"$source")
 #clones the source
 echo $fixed
-git clone $fixed newPackage
+git clone "$fixed" newPackage
 cd newPackage
 #runs mason publish --check --travis on the package
 mason publish --check --travis
