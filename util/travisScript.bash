@@ -15,7 +15,7 @@ buildChapel () {
 makeCheckAndMason () {
   make check
   output=$?
-  if [[ $output -eq 0 ]]; then
+  if [ ${output} -eq 0 ]; then
     make mason
   else
     exit 1
