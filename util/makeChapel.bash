@@ -29,7 +29,9 @@ f="$(basename -- $FILE)"
 echo "$f"
 source="$(grep source "$f" | cut -d= -f2)"
 #strips the quotes off of the source
-fixed=$(sed -e 's/^"//' -e 's/"$//' <<<"$source")
+temp="${source%\"}"
+temp="${temp#\"}"
+fixed="$temp"
 #clones the source
 echo $fixed
 git clone "$fixed" newPackage
