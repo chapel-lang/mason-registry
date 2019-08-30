@@ -23,7 +23,11 @@ cd $(dirname $path)
 # grabs the source from the toml
 echo $package
 pwd
-source="$(grep source "$package" | cut -d= -f2)"
+FILE=$package
+basename "$FILE"
+f="$(basename -- $FILE)"
+echo "$f"
+source="$(grep source "$f" | cut -d= -f2)"
 #strips the quotes off of the source
 fixed=$(sed -e 's/^"//' -e 's/"$//' <<<"$source")
 #clones the source
