@@ -30,7 +30,7 @@ echo "$f"
 source="$(grep source "$f" | cut -d= -f2)"
 echo $source
 #strips the quotes off of the source
-fixed=$($source | tr -d '"')
+fixed="$source" | tr -d '"'
 #clones the source
 echo $fixed
 git clone $fixed newPackage
