@@ -2,13 +2,12 @@
 
 # Clones master of chapel and quickstarts with CHPL_REGEXP=re2
 git clone --depth=1 --branch=master https://github.com/chapel-lang/chapel.git
-cd chapel
 
 buildChapel {
     cd chapel
     source util/quickstart/setchplenv.bash
     export CHPL_REGEXP=re2
-    make -j 4
+    make
 }
 
 # Runs a make check, and if it passes then makes mason
