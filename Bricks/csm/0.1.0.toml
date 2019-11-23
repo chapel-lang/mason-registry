@@ -1,0 +1,6 @@
+[brick]
+name = "csm"
+version = "0.1.0"
+chplVersion = "1.20.0"
+author = ["Ege Burak Özpınar <egeburak.ozpinar@gmail.com>"]
+source = "https://github.com/egeOzpinar/csm.git"
