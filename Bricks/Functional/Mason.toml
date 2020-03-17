@@ -1,0 +1,7 @@
+[brick]
+name = "functional"
+version = "0.1.0"
+author = "Omar Khaled"
+source = "https://github.com/omar-3/functional"
+chplVersion = "1.20.0"
+
