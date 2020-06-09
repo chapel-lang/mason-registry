@@ -2,7 +2,6 @@
 
 # Clones master of chapel and quickstarts with CHPL_REGEXP=re2
 git clone --depth=1 --branch=master https://github.com/chapel-lang/chapel.git
-cd chapel
 
 buildChapel () {
   cd chapel
@@ -24,6 +23,7 @@ makeCheckAndMason () {
 
 # Parses the last merge commit, getting the most recent package added to the registry
 checkPackage () {
+  cd ..
   package=$(git log -m -1 --name-only --pretty="format:")
   end=".end"
   path="$package$end"
