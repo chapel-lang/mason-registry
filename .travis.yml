@@ -1,16 +1,14 @@
 os:
-   - linux
+  - linux
+
 matrix:
-   include:
-     - name: "checkTomls"
-       env: TEST_COMMAND="./checkTomls.bash"
-       
-jobs:
-  include: 
-     - stage: Get
-       env: GET_COMMAND='./util/travisScript.bash'
-       script: (eval '$GET_COMMAND')
-sudo: true
+  include:
+    - name: "checkTomls"
+      env: TEST_COMMAND="./checkTomls.bash"
+
+    - name: "travisScript"
+      env: TEST_COMMAND="./util/travisScript.bash"
+
 script:
-   - (eval "$TEST_COMMAND")
+  - (eval "$TEST_COMMAND")
 
