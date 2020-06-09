@@ -1,0 +1,8 @@
+[brick]
+name = "test"
+authors = ["ankingcodes"]
+version = "0.0.1"
+chplVersion = "1.21.0"
+source = "https://github.com/oplambeck/chapel-gnuplot.git"
+
+[dependencies]
