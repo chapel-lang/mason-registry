@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 # Clones master of chapel and quickstarts with CHPL_REGEXP=re2
-git clone --depth=1 --branch=master https://github.com/chapel-lang/chapel.git
+#git clone --depth=1 --branch=master https://github.com/chapel-lang/chapel.git
 
 buildChapel () {
   cd chapel
@@ -28,8 +28,8 @@ checkPackage () {
   end=".end"
   path="$package$end"
   cd $(dirname $path)
-  echo $package
-  echo $(dirname $path)
+  echo "package detected from git diff: ${package}"
+  echo "package path: ${path}"
 
   # Parses the source from the toml
   FILE=$package
@@ -45,9 +45,9 @@ checkPackage () {
   cd newPackage
  }
 
-buildChapel
+#buildChapel
 
-makeCheckAndMason
+#makeCheckAndMason
 
 checkPackage
 
