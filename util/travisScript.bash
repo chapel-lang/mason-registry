@@ -24,10 +24,12 @@ makeCheckAndMason () {
 # Parses the last merge commit, getting the most recent package added to the registry
 checkPackage () {
   cd ..
-  package=$(git log -m -1 --name-only --pretty="format:")
+  package=$(git diff --name-only HEAD HEAD~1)
   end=".end"
   path="$package$end"
   cd $(dirname $path)
+  echo $package
+  echo $(dirname $path)
 
   # Parses the source from the toml
   FILE=$package
