@@ -51,5 +51,8 @@ makeCheckAndMason
 
 checkPackage
 
+# adds mason-registry to MASON_HOME
+mason update
+
 mason publish --ci-check
 exit $?
