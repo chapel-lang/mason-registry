@@ -4,7 +4,7 @@
 git clone --depth=1 --branch=master https://github.com/chapel-lang/chapel.git
 
 buildChapel () {
-  cd chapel
+  cd chapel || exit 1
   source util/quickstart/setchplenv.bash
   export CHPL_REGEXP=re2
   make
@@ -27,22 +27,22 @@ checkPackage () {
   package=$(git diff --name-only HEAD HEAD~1)
   end=".end"
   path="$package$end"
-  cd $(dirname $path)
+  cd "$(dirname "$path")" || exit 1
   echo "package detected from git diff: ${package}"
   echo "package path: ${path}"
 
   # Parses the source from the toml
   FILE=$package
   basename "$FILE"
-  f="$(basename -- $FILE)"
+  f="$(basename -- "$FILE")"
   source="$(grep source "$f" | cut -d= -f2)"
 
   # Strips the quotes off of the source
   fixed=$(echo "$source" | tr -d '"')
 
   # Clones the source
-  git clone $fixed newPackage
-  cd newPackage
+  git clone "$fixed" newPackage
+  cd newPackage || exit 1
  }
 
 buildChapel
@@ -56,3 +56,4 @@ mason update
 
 mason publish --ci-check
 exit $?
+

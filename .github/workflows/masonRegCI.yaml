@@ -1,0 +1,20 @@
+name: Mason Registry CI
+on:
+  pull_request: 
+    paths:
+      - 'Bricks/**'
+jobs:
+  checks_for_package:
+    name: Check Package 
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          fetch-depth: 3
+      - name: Run checkTomlScript
+        run: |
+          bash ./checkTomls.bash
+      - name: CI Check package
+        run: |
+          bash ./util/travisScript.bash
+
