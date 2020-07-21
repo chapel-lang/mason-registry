@@ -1,6 +1,8 @@
 name: Generate Rank on Cache
 on: 
   push: 
+    branches-ignore: # disables this script for now
+      - '**' 
     branch:
       - master
     path:
@@ -25,15 +27,17 @@ jobs:
           python-version: "3.7"
       - name: Sort cache file
         run: |
-          pip install toml-sort
+          python3 -m pip install toml-sort==0.17.0
           toml-sort cache.toml -o cache.toml
           cat cache.toml
       - name: Commit changes
         run: |
-          git config --global user.name "ankingcodes"
-          git config --global user.name "ankush.bhardwaj0@gmail.com"
+          # WIP: use authentic credentials
+          git config --global user.name "chapel"
+          git config --global user.name "chapel@gmail.com"
           git add cache.toml
-          git commit -m "appended to cache.toml"
+          commit_sha=$(git rev-parse HEAD | cut -c 1-8)
+          git commit -m "appended package from $commit_sha to cache.toml"
       - name: Append rank to Cache
         uses: ad-m/github-push-action@master
         with:
