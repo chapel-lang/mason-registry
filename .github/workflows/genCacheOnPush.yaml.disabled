@@ -1,0 +1,44 @@
+name: Generate Rank on Cache
+on: 
+  push: 
+    branches-ignore: # disables this script for now
+      - '**' 
+    branch:
+      - master
+    path:
+      - 'Bricks/**'
+    paths-ignore:
+      - '.github/**'
+      - 'util/**'
+jobs:
+  run_on_push:
+    name: Append Rank to Cache
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          fetch-depth: 4
+      - name: Run script to rank packages
+        run: |
+          bash ./util/searchRankScript.bash
+      - name: setup python 3.7
+        uses: actions/setup-python@v1
+        with: 
+          python-version: "3.7"
+      - name: Sort cache file
+        run: |
+          python3 -m pip install toml-sort==0.17.0
+          toml-sort cache.toml -o cache.toml
+          cat cache.toml
+      - name: Commit changes
+        run: |
+          # WIP: use authentic credentials
+          git config --global user.name "chapel"
+          git config --global user.name "chapel@gmail.com"
+          git add cache.toml
+          commit_sha=$(git rev-parse HEAD | cut -c 1-8)
+          git commit -m "appended package from $commit_sha to cache.toml"
+      - name: Append rank to Cache
+        uses: ad-m/github-push-action@master
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
