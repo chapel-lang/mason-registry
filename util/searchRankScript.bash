@@ -20,6 +20,8 @@ echo "[LOG]: Package url = ${fixed}"
 name="$(grep name "$path" | cut -d= -f2 | tr -d '"' | tr -d ' ')"
 echo "[LOG]: Package name = ${name}"
 version="$(grep version "$path" | cut -d= -f2 | tr -d '"' | tr -d ' ')"
+# convert version from 0.1.0 to 0_1_0
+version=$(echo ${version} | tr '.' '_')
 echo "[LOG]: Version = ${version}"
 git clone "$fixed" "$(dirname ${path})/newPackage"
 packagePath="$(dirname ${path})/newPackage"
@@ -75,14 +77,14 @@ score=${score%.*}
 echo "Score normalized to $score"
 
 # check if package name and version already exists 
-if grep "$name.\"$version\"" cache.toml
+if grep "$name.$version" cache.toml
 then 
   echo "Package already exists. Cannot overwrite."
   exit 1
 fi
 
 # append package score to TOML cache file
-echo "[$name.\"$version\"]" >> cache.toml
+echo "[$name.$version]" >> cache.toml
 echo "score = $score" >> cache.toml
 echo "Wrote '$name = $score' to cache.toml"
 
