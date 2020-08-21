@@ -48,16 +48,31 @@ fi
 [[ -d "$exampleDir" ]] && score=$((score+1)) && echo "example dir found in package"
 [[ -d "$srcDir" ]] && score=$((score+1)) && echo "src dir found in package"
 
-# points for number of examples 
+# points for number of examples (max 3)
 countForExamples=$(ls -l $exampleDir/*.chpl 2>/dev/null | wc -l)
 echo "Found $countForExamples examples in package."
+if [ "$countForExamples" -gt 3 ] 
+then 
+  countForExamples=3
+fi
 score=$((score+countForExamples))
 
-# points for number of tests
+# points for number of tests (max 3)
 countForTests=$(ls -l $testDir/*.chpl 2>/dev/null | wc -l)
 echo "Found $countForTests tests in package."
+if [ "$countForTests" -gt 3 ]
+then
+  countForTests=3
+fi
 score=$((score+countForTests))
 echo "Total score generated for $name = $score"
+
+# normalize the score to 100
+maxScore=12
+score=$(echo "scale=2 ; $score / $maxScore" | bc)
+score=$(echo "$score * 100" | bc)
+score=${score%.*}
+echo "Score normalized to $score"
 
 # check if package name and version already exists 
 if grep "$name.\"$version\"" cache.toml
