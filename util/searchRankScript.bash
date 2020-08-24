@@ -53,24 +53,26 @@ fi
 # points for number of examples (max 3)
 countForExamples=$(ls -l $exampleDir/*.chpl 2>/dev/null | wc -l)
 echo "Found $countForExamples examples in package."
+maxScoreExamples=3
 if [ "$countForExamples" -gt 3 ] 
 then 
-  countForExamples=3
+  countForExamples=$maxScoreExamples
 fi
 score=$((score+countForExamples))
 
 # points for number of tests (max 3)
+maxScoreTests=3
 countForTests=$(ls -l $testDir/*.chpl 2>/dev/null | wc -l)
 echo "Found $countForTests tests in package."
 if [ "$countForTests" -gt 3 ]
 then
-  countForTests=3
+  countForTests=$maxScoreTests
 fi
 score=$((score+countForTests))
 echo "Total score generated for $name = $score"
 
 # normalize the score to 100
-maxScore=12
+maxScore=$((6+maxScoreTests+maxScoreExamples))
 score=$(echo "scale=2 ; $score / $maxScore" | bc)
 score=$(echo "$score * 100" | bc)
 score=${score%.*}
