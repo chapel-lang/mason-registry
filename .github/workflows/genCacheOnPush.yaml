@@ -32,7 +32,6 @@ jobs:
           cat cache.toml
       - name: Commit changes
         run: |
-          # WIP: use authentic credentials
           git config --global user.name "chapelautomaton"
           git config --global user.email "chapel_github@cray.com"
           git add cache.toml
