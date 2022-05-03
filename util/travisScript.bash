@@ -7,6 +7,7 @@ buildChapel () {
   cd chapel || exit 1
   source util/quickstart/setchplenv.bash
   export CHPL_REGEXP=re2
+  export CHPL_RE2=bundled
   make
  }
 
