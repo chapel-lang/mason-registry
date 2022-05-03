@@ -1,6 +1,7 @@
 [brick]
-chplVersion = "1.27.0"
-license = "None"
-name = "HelloWorld"
-source = "https://github.com/bmcdonald3/HelloWorld"
-version = "1.0.0"
+author="Ben McDonald"
+chplVersion="1.27.0"
+license="None"
+name="HelloWorld"
+source="https://github.com/bmcdonald3/HelloWorld"
+version="1.0.0"
