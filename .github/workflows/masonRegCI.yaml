@@ -16,5 +16,5 @@ jobs:
           bash ./checkTomls.bash
       - name: CI Check package
         run: |
-          bash ./util/travisScript.bash
+          bash ./util/runMasonCI.bash
 
