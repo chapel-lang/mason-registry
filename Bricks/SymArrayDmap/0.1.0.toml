@@ -1,0 +1,10 @@
+[brick]
+authors="Mike Merrill"
+chplVersion="1.27.0"
+license="None"
+name="SymArrayDmap"
+source="https://github.com/bmcdonald3/SymArrayDmap"
+version="0.1.0"
+
+[dependencies]
+
