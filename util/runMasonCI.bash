@@ -37,10 +37,10 @@ checkPackage () {
   basename "$FILE"
   f="$(basename -- "$FILE")"
   source="$(grep source "$f" | cut -d= -f2)"
-  echo $source
+  echo "source value: $source"
   # Strips the quotes off of the source
   fixed=$(echo "$source" | tr -d '"')
-  echo "$fixed"
+  echo "adjusted source to 'fixed' value: $fixed"
   # Clones the source
   git clone "$fixed" newPackage
   cd newPackage || exit 1
