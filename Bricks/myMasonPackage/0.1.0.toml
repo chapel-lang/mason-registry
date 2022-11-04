@@ -3,7 +3,7 @@
 chplVersion = "1.25.0"
 license = "None"
 name = "myMasonPackage"
-source = "git@github.com:arezaii/myMasonPackage.git"
+source = "https://github.com/arezaii/myMasonPackage.git"
 type = "application"
 version = "0.1.0"
 
