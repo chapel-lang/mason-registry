@@ -1,5 +1,8 @@
 #!/usr/bin/env bash
 
+# TODO: Remove this test
+git clone http://github.com/arezaii/myMasonPackage.git
+
 # Clones master of chapel and quickstarts with CHPL_REGEXP=re2
 git clone --depth=1 --branch=main https://github.com/chapel-lang/chapel.git
 
