@@ -1,11 +1,11 @@
 name: Mason Registry CI
 on:
-  pull_request: 
+  pull_request:
     paths:
       - 'Bricks/**'
 jobs:
   checks_for_package:
-    name: Check Package 
+    name: Check Package
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
@@ -15,7 +15,7 @@ jobs:
       - name: Run checkTomlScript
         run: |
           bash ./checkTomls.bash
-      - name Reconfigure git to use HTTPS
+      - name: Reconfigure git to use HTTPS
         run: >
           git config --global url. "https://github.com/".insteadof
           ssh://git@github.com/
