@@ -17,7 +17,7 @@ jobs:
           bash ./checkTomls.bash
       - name: Reconfigure git to use HTTPS
         run: >
-          git config --global url. "https://github.com/".insteadof
+          git config --global url."https://github.com/".insteadof
           ssh://git@github.com/
       - name: CI Check package
         run: |
