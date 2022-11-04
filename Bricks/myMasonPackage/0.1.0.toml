@@ -1,0 +1,16 @@
+
+[brick]
+chplVersion = "1.25.0"
+license = "None"
+name = "myMasonPackage"
+source = "git@github.com:arezaii/myMasonPackage.git"
+type = "application"
+version = "0.1.0"
+
+[dependencies]
+DataStructures = "0.1.0"
+NumpyLike = "0.1.0"
+
+[dependencies.SymArrayDmap]
+git = "https://github.com/bmcdonald3/SymArrayDmap"
+
