@@ -1,6 +1,6 @@
 [brick]
 name = "UUID"
-version = "1.0.0"
+version = "1.0.1"
 chplVersion = "2.0.0"
 authors = "Audrey MP"
 type = "module"
