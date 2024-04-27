@@ -39,7 +39,7 @@ checkPackage () {
   source="$(grep source "$f" | cut -d= -f2)"
   echo "source value: $source"
   # Strips the quotes off of the source
-  fixed=$(echo "$source" | tr -d '"')
+  fixed=$(echo "$source" | tr -d '"' | awk '{$1=$1};1')
   echo "adjusted source to 'fixed' value: $fixed"
   # Clones the source
   git clone "$fixed" newPackage
