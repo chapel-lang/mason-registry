@@ -15,6 +15,10 @@ jobs:
       - name: Run checkTomlScript
         run: |
           bash ./checkTomls.bash
+      - name: Reconfigure git to use HTTPS
+        run: |
+          git config --global url."https://github.com/".insteadOf git@github.com:
+          git config --global url."https://".insteadOf git://
       - name: CI Check package
         run: |
           bash ./util/runMasonCI.bash
