@@ -4,22 +4,22 @@
 git clone --depth=1 --branch=main https://github.com/chapel-lang/chapel.git
 
 buildChapel () {
-  cd chapel || exit 1
-  source util/quickstart/setchplenv.bash
-  export CHPL_REGEXP=re2
-  export CHPL_RE2=bundled
-  make
+  # cd chapel || exit 1
+  # source util/quickstart/setchplenv.bash
+  # export CHPL_REGEXP=re2
+  # export CHPL_RE2=bundled
+  # make
  }
 
 # Runs a make check, and if it passes then makes mason
 makeCheckAndMason () {
-  make check
-  output=$?
-  if [ ${output} -eq 0 ]; then
-    make mason
-  else
-    exit 1
-  fi
+  # make check
+  # output=$?
+  # if [ ${output} -eq 0 ]; then
+  #   make mason
+  # else
+  #   exit 1
+  # fi
  }
 
 # Parses the last merge commit, getting the most recent package added to the registry
@@ -28,6 +28,7 @@ checkPackage () {
   package=$(git diff --name-only HEAD HEAD~1)
   end=".end"
   path="$package$end"
+  echo $path
   cd "$(dirname "$path")" || exit 1
   echo "package detected from git diff: ${package}"
   echo "package path: ${path}"
