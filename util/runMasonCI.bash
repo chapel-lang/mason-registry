@@ -9,6 +9,7 @@ buildChapel () {
   # export CHPL_REGEXP=re2
   # export CHPL_RE2=bundled
   # make
+  echo "yep"
  }
 
 # Runs a make check, and if it passes then makes mason
@@ -20,6 +21,7 @@ makeCheckAndMason () {
   # else
   #   exit 1
   # fi
+  echo "yep"
  }
 
 # Parses the last merge commit, getting the most recent package added to the registry
