@@ -5,6 +5,5 @@ version = "0.2.0"
 chplVersion = "1.16.0"
 author = "Sam Partee"
 source = "https://github.com/Spartee/_MasonTest1"
-x = ""
 
 [dependencies]

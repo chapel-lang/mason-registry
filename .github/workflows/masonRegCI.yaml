@@ -1,8 +1,8 @@
 name: Mason Registry CI
 on:
   pull_request:
-    paths:
-      - 'Bricks/**'
+    # paths:
+    #   - 'Bricks/**'
 jobs:
   checks_for_package:
     name: Check Package
