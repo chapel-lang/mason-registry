@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 # Clones master of chapel and quickstarts with CHPL_REGEXP=re2
-git clone --depth=1 --branch=main https://github.com/chapel-lang/chapel.git
+git clone --depth=1 --branch=main git@github.com:chapel-lang/chapel.git
 
 buildChapel () {
   cd chapel || exit 1
@@ -57,4 +57,3 @@ mason update
 
 mason publish --ci-check
 exit $?
-
