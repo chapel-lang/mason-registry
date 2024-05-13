@@ -25,7 +25,7 @@ makeCheckAndMason () {
 # Parses the last merge commit, getting the most recent package added to the registry
 checkPackage () {
   cd ..
-  package=$(git diff --name-only HEAD HEAD~1)
+  package=$(git diff --name-only HEAD HEAD~1 | grep -E '.*\.toml')
   end=".end"
   path="$package$end"
   cd "$(dirname "$path")" || exit 1
@@ -40,6 +40,7 @@ checkPackage () {
   echo "source value: $source"
   # Strips the quotes off of the source
   fixed=$(echo "$source" | tr -d '"' | awk '{$1=$1};1')
+  fixed="${fixed/git@github.com:/"https://github.com/"}"
   echo "adjusted source to 'fixed' value: $fixed"
   # Clones the source
   git clone "$fixed" newPackage
@@ -57,4 +58,3 @@ mason update
 
 mason publish --ci-check
 exit $?
-
