@@ -1,0 +1,11 @@
+
+[brick]
+chplVersion = "2.1.0"
+license = "None"
+name = "Downsampling"
+source = "git@github.com:jeremiah-corrado/chpl-downsample.git"
+type = "library"
+version = "0.1.0"
+
+[dependencies]
+
