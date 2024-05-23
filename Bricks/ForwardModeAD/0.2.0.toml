@@ -1,0 +1,12 @@
+
+[brick]
+authors = "Luca Ferranti"
+chplVersion = "2.0.0"
+license = "MIT"
+name = "ForwardModeAD"
+source = "git@github.com:lucaferranti/ForwardModeAD.git"
+type = "library"
+version = "0.2.0"
+
+[dependencies]
+
