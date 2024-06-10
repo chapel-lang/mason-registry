@@ -1,0 +1,10 @@
+[brick]
+name = "UUID"
+version = "1.0.3"
+chplVersion = "2.0.0"
+authors = "Audrey MP"
+type = "module"
+source = "https://codeberg.org/Astatide/chplUUID"
+license = "AGPL-3.0-or-later"
+
+[dependencies]
