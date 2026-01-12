@@ -1,0 +1,8 @@
+[brick]
+name = "quickchpl"
+version = "1.0.1"
+chplVersion = "2.6.0..2.8.0"
+license = "MIT"
+source = "https://github.com/Jesssullivan/quickchpl/archive/refs/tags/v1.0.1.tar.gz"
+
+[dependencies]
