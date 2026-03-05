@@ -1,0 +1,13 @@
+
+[brick]
+authors = ["Jade Abraham"]
+chplVersion = "2.7.0"
+copyrightYear = "2026"
+license = "Apache-2.0"
+name = "TemplateString"
+source = "git@github.com:jabraham17/TemplateString.git"
+type = "library"
+version = "0.1.0"
+
+[dependencies]
+
