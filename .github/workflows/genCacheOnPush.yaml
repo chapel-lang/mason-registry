@@ -32,9 +32,8 @@ jobs:
           cat cache.toml
       - name: Commit changes
         run: |
-          # WIP: use authentic credentials
-          git config --global user.name "chapel"
-          git config --global user.name "chapel@gmail.com"
+          git config --global user.name "chapelautomaton"
+          git config --global user.email "chapel_github@cray.com"
           git add cache.toml
           commit_sha=$(git rev-parse HEAD | cut -c 1-8)
           git commit -m "appended package from $commit_sha to cache.toml"
