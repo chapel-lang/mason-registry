@@ -7,14 +7,16 @@ jobs:
   checks_for_package:
     name: Check Package
     runs-on: ubuntu-latest
+    container:
+      image: chapel/chapel:latest
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v6
         with:
           fetch-depth: 3
           persist-credentials: false
       - name: Run checkTomlScript
         run: |
-          bash ./checkTomls.bash
+          bash ./util/checkTomls.bash
       - name: CI Check package
         run: |
           bash ./util/runMasonCI.bash
