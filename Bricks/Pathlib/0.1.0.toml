@@ -1,0 +1,13 @@
+
+[brick]
+authors = ["Jade Abraham"]
+chplVersion = "2.7.0"
+copyrightYear = "2026"
+license = "Apache-2.0"
+name = "Pathlib"
+source = "https://github.com/jabraham17/Pathlib"
+type = "library"
+version = "0.1.0"
+
+[dependencies]
+
