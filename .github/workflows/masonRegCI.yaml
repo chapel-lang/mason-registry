@@ -4,19 +4,43 @@ on:
     paths:
       - 'Bricks/**'
 jobs:
+  find_package:
+    name: Find package to run CI on
+    runs-on: ubuntu-latest
+    outputs:
+      package_path: ${{ steps.find_pkg.outputs.package_path }}
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          fetch-depth: 3
+          persist-credentials: false
+      - name: Find the last modified package
+        id: find_pkg
+        run: |
+          # Parses the last merge commit, getting the most recent package added to the registry
+          echo "Finding the last modified package in Bricks directory..."
+          LAST_MODIFIED_PACKAGE=$(git diff --name-only HEAD~1 HEAD | grep -E '.*\.toml' | head -n 1)
+          if [ -z "$LAST_MODIFIED_PACKAGE" ]; then
+            echo "No package found in the last commit. Exiting."
+            exit 0
+          fi
+          echo "Last modified package: $LAST_MODIFIED_PACKAGE"
+          echo "package_path=$LAST_MODIFIED_PACKAGE" >> $GITHUB_OUTPUT
   checks_for_package:
     name: Check Package
+    needs: find_package
     runs-on: ubuntu-latest
     container:
       image: chapel/chapel:latest
     steps:
       - uses: actions/checkout@v6
         with:
-          fetch-depth: 3
           persist-credentials: false
       - name: Run checkTomlScript
         run: |
           bash ./util/checkTomls.bash
       - name: CI Check package
         run: |
-          bash ./util/runMasonCI.bash
+          package_toml=${{ needs.find_package.outputs.package_path }}
+          echo "Running CI checks for package: $package_toml"
+          bash ./util/runMasonCI.bash "$package_toml"
