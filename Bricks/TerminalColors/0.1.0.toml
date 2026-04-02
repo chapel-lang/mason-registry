@@ -1,0 +1,14 @@
+[brick]
+name="TerminalColors"
+version="0.1.0"
+chplVersion="2.8.0"
+type="library"
+source="git@github.com:jabraham17/TerminalColors.git"
+
+authors=["Jade Abraham"]
+copyrightYear="2026"
+license="Apache-2.0"
+
+[dependencies]
+
+
