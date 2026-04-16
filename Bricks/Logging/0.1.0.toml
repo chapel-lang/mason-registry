@@ -1,8 +1,13 @@
 [brick]
 name = "Logging"
 version = "0.1.0"
-chplVersion = "1.19.0"
-authors = "Audrey Pratt"
-source = "https://github.com/ajoshpratt/chpllog"
+chplVersion = "2.8.0"
+type = "library"
+source = "git@github.com:jabraham17/Logging.git"
+authors = ["Jade Abraham"]
+copyrightYear = "2026"
+license = "Apache-2.0"
 
 [dependencies]
+TemplateString = "0.1.0"
+TerminalColors = "0.1.0"
