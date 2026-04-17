@@ -1,0 +1,14 @@
+[brick]
+name = "Log"
+version = "0.1.0"
+chplVersion = "2.8.0"
+type = "library"
+source = "git@github.com:jabraham17/Log.git"
+authors = ["Jade Abraham"]
+copyrightYear = "2026"
+license = "Apache-2.0"
+docopts = ["--index=docs/index.rst"]
+
+[dependencies]
+TemplateString = "0.1.0"
+TerminalColors = "0.1.0"
