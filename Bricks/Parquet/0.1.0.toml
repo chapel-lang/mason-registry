@@ -1,0 +1,15 @@
+
+[brick]
+chplVersion = "2.8.0"
+license = "None"
+name = "Parquet"
+source = "git@github.com:e-kayrakli/Parquet.git"
+type = "library"
+version = "0.1.0"
+
+[dependencies]
+
+[system]
+arrow = "19.0.1"
+parquet = "19.0.1"
+
