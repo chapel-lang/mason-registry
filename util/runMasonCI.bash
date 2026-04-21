@@ -17,7 +17,7 @@ checkPackage () {
   source="$(grep source "$package" | cut -d= -f2)"
   echo "source value: $source"
   # Strips the quotes off of the source and adjusts the format if necessary
-  fixed=$(echo "$source" | tr -d '"' | awk '{$1=$1};1' | sed 's|git@github.com:/|https://github.com/|')
+  fixed=$(echo "$source" | tr -d '"' | awk '{$1=$1};1' | sed 's|git@github.com:|https://github.com/|')
   echo "adjusted source to 'fixed' value: $fixed"
   # Clones the source
   git clone "$fixed" newPackage
