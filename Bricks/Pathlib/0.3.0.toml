@@ -1,0 +1,12 @@
+[brick]
+name = "Pathlib"
+version = "0.3.0"
+chplVersion = "2.7.0"
+type = "library"
+source = "https://github.com/jabraham17/Pathlib"
+authors = ["Jade Abraham"]
+copyrightYear = "2026"
+license = "Apache-2.0"
+docopts = ["--index=docs/index.rst"]
+
+[dependencies]
