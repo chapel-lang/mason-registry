@@ -1,0 +1,24 @@
+[brick]
+name = "CVL"
+version = "0.2.0"
+chplVersion = "2.8.0"
+type = "library"
+source = "git@github.com:jabraham17/CVL.git"
+authors = ["Jade Abraham"]
+copyrightYear = "2025"
+license = "Apache-2.0"
+compopts = "--using-attribute-toolname=lint --no-overload-sets-checks --ccflags=-Wno-strict-prototypes"
+docopts = "--using-attribute-toolname=lint --index=docs/index.rst"
+tests = ["ArrTest.chpl", "BitTest.chpl", "Bounds.chpl", "BytesTest.chpl", "Casting.chpl", "CmpTest.chpl", "Distributed.chpl", "FmaTest.chpl", "GatherTest.chpl", "InitTest.chpl", "IsAllTest.chpl", "IterTest.chpl", "MaskLoadTest.chpl", "MathFuncs.chpl", "MathTest.chpl", "SAXPYVariants.chpl", "Shifts.chpl", "ShiftHalts.chpl", "ShuffleTest.chpl", "SqrtTest.chpl", "sleef/Trig.chpl"]
+
+[examples]
+examples = ["stream.chpl", "streamExplicitVector.chpl", "streamVectorIterators.chpl"]
+
+[dependencies]
+[tool.chpl-language-server]
+module-dir = ["src"]
+
+[tool.chplcheck]
+file = ["src/**/*.chpl", "test/**/*.chpl"]
+add-rules = ["lint/rules.py"]
+disable-rule = ["IncorrectIndentation"]
