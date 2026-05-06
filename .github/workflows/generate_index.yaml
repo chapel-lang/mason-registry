@@ -27,8 +27,6 @@ jobs:
 
       - name: Set up Python
         uses: actions/setup-python@v5
-        with:
-          python-version: "3.11"
 
       - name: Generate index.json
         run: python3 util/generate_registry_index.py
