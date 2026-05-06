@@ -15,18 +15,7 @@ import json
 import subprocess
 import sys
 from pathlib import Path
-
-try:
-    import tomllib
-except ImportError:
-    try:
-        import tomli as tomllib  # type: ignore[no-redef]
-    except ImportError:
-        print(
-            "Error: tomllib (Python 3.11+) or the 'tomli' package is required.",
-            file=sys.stderr,
-        )
-        sys.exit(1)
+import tomllib
 
 REPO_ROOT = Path(__file__).parent.parent
 BRICKS_DIR = REPO_ROOT / "Bricks"
@@ -72,7 +61,7 @@ def build_index() -> dict[str, list[dict]]:
         if not pkg_dir.is_dir():
             continue
 
-        if pkg_dir.name in ("_MasonTest1", "_MasonTest2"):
+        if pkg_dir.name.startswith("_"):
             continue
 
         versions: list[dict] = []
