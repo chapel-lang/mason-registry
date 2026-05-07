@@ -1,1 +1,308 @@
-{}
+{
+  "Codecs": [
+    {
+      "version": "0.1.0",
+      "createdDate": "2022-11-30T09:27:48-05:00",
+      "chplVersion": "1.29.0",
+      "license": "None",
+      "source": "https://github.com/bmcdonald3/Codecs",
+      "type": "library"
+    }
+  ],
+  "csm": [
+    {
+      "version": "0.1.0",
+      "createdDate": "2019-11-23T22:06:06+03:00",
+      "chplVersion": "1.20.0",
+      "source": "https://github.com/egeOzpinar/csm.git"
+    }
+  ],
+  "CVL": [
+    {
+      "version": "0.2.0",
+      "createdDate": "2026-04-23T20:19:13Z",
+      "chplVersion": "2.8.0",
+      "authors": [
+        "Jade Abraham"
+      ],
+      "license": "Apache-2.0",
+      "source": "git@github.com:jabraham17/CVL.git",
+      "copyrightYear": "2025",
+      "type": "library"
+    }
+  ],
+  "DataStructures": [
+    {
+      "version": "0.1.0",
+      "createdDate": "2019-03-29T17:33:37-04:00",
+      "chplVersion": "1.19",
+      "source": "https://github.com/LouisJenkinsCS/Chapel-Data-Structures"
+    }
+  ],
+  "Dyno": [
+    {
+      "version": "0.1.0",
+      "createdDate": "2026-04-14T23:53:59Z",
+      "chplVersion": "2.8.0",
+      "authors": [
+        "Jade Abraham"
+      ],
+      "license": "Apache-2.0",
+      "source": "https://github.com/jabraham17/Dyno.git",
+      "copyrightYear": "2026",
+      "type": "library"
+    }
+  ],
+  "ForwardModeAD": [
+    {
+      "version": "0.2.0",
+      "createdDate": "2024-05-04T16:38:12+03:00",
+      "chplVersion": "2.0.0",
+      "authors": [
+        "Luca Ferranti"
+      ],
+      "license": "MIT",
+      "source": "git@github.com:lucaferranti/ForwardModeAD.git",
+      "type": "library"
+    },
+    {
+      "version": "0.1.0",
+      "createdDate": "2022-10-30T19:33:14+02:00",
+      "chplVersion": "1.28.0",
+      "authors": [
+        "Luca Ferranti"
+      ],
+      "license": "MIT",
+      "source": "git@github.com:lucaferranti/ForwardModeAD.git",
+      "type": "library"
+    }
+  ],
+  "Gnuplot": [
+    {
+      "version": "0.0.1",
+      "createdDate": "2019-06-21T14:00:41-07:00",
+      "chplVersion": "1.18.0",
+      "authors": [
+        "Marcos Cleison",
+        "Owen Plambeck"
+      ],
+      "source": "https://github.com/oplambeck/chapel-gnuplot.git"
+    }
+  ],
+  "GPUIterator": [
+    {
+      "version": "0.1.0",
+      "createdDate": "2019-07-09T13:44:25-04:00",
+      "chplVersion": "1.16.0..1.20.0",
+      "authors": [
+        "Akihiro Hayashi",
+        "Sri Raj Paul",
+        "Vivek Sarkar"
+      ],
+      "source": "https://github.com/ahayashi/chapel-gpu"
+    }
+  ],
+  "HelloWorld": [
+    {
+      "version": "0.1.0",
+      "createdDate": "2022-05-03T09:13:55-07:00",
+      "chplVersion": "1.27.0",
+      "authors": [
+        "Ben McDonald"
+      ],
+      "license": "None",
+      "source": "https://github.com/bmcdonald3/HelloWorld",
+      "type": "library"
+    }
+  ],
+  "LinearAlgebraJama": [
+    {
+      "version": "0.1.0",
+      "createdDate": "2017-10-03T14:57:45-07:00",
+      "chplVersion": "1.16.0..1.18.0",
+      "source": "https://github.com/ct-clmsn/LinearAlgebraJama"
+    }
+  ],
+  "LocalAtomics": [
+    {
+      "version": "0.1.0",
+      "createdDate": "2019-07-08T16:31:20-07:00",
+      "chplVersion": "1.19",
+      "source": "https://github.com/LouisJenkinsCS/LocalAtomics"
+    }
+  ],
+  "Log": [
+    {
+      "version": "0.2.0",
+      "createdDate": "2026-04-17T17:12:54Z",
+      "chplVersion": "2.8.0",
+      "authors": [
+        "Jade Abraham"
+      ],
+      "license": "Apache-2.0",
+      "source": "git@github.com:jabraham17/Log.git",
+      "copyrightYear": "2026",
+      "type": "library"
+    },
+    {
+      "version": "0.1.0",
+      "createdDate": "2026-04-17T17:12:54Z",
+      "chplVersion": "2.9.0",
+      "authors": [
+        "Jade Abraham"
+      ],
+      "license": "Apache-2.0",
+      "source": "git@github.com:jabraham17/Log.git",
+      "copyrightYear": "2026",
+      "type": "library"
+    }
+  ],
+  "Logging": [
+    {
+      "version": "0.1.0",
+      "createdDate": "2019-04-03T13:09:08-07:00",
+      "chplVersion": "1.19.0",
+      "authors": [
+        "Audrey Pratt"
+      ],
+      "source": "https://github.com/ajoshpratt/chpllog"
+    }
+  ],
+  "MatrixMarket": [
+    {
+      "version": "0.1.0",
+      "createdDate": "2017-10-03T14:57:45-07:00",
+      "chplVersion": "1.16.0..1.18.0",
+      "source": "https://github.com/ct-clmsn/MatrixMarket"
+    }
+  ],
+  "NumpyLike": [
+    {
+      "version": "0.1.0",
+      "createdDate": "2019-01-11T12:05:03-05:00",
+      "chplVersion": "1.19.0",
+      "source": "https://gitlab.com/npadmana/numpylike.git"
+    }
+  ],
+  "Pathlib": [
+    {
+      "version": "0.3.0",
+      "createdDate": "2026-03-10T14:46:27-07:00",
+      "chplVersion": "2.7.0",
+      "authors": [
+        "Jade Abraham"
+      ],
+      "license": "Apache-2.0",
+      "source": "https://github.com/jabraham17/Pathlib",
+      "copyrightYear": "2026",
+      "type": "library"
+    },
+    {
+      "version": "0.2.0",
+      "createdDate": "2026-03-10T14:46:27-07:00",
+      "chplVersion": "2.7.0",
+      "authors": [
+        "Jade Abraham"
+      ],
+      "license": "Apache-2.0",
+      "source": "https://github.com/jabraham17/Pathlib",
+      "copyrightYear": "2026",
+      "type": "library"
+    },
+    {
+      "version": "0.1.0",
+      "createdDate": "2026-03-10T14:46:27-07:00",
+      "chplVersion": "2.7.0",
+      "authors": [
+        "Jade Abraham"
+      ],
+      "license": "Apache-2.0",
+      "source": "https://github.com/jabraham17/Pathlib",
+      "copyrightYear": "2026",
+      "type": "library"
+    }
+  ],
+  "quickchpl": [
+    {
+      "version": "1.0.2",
+      "createdDate": "2026-01-12T15:20:29-05:00",
+      "chplVersion": "2.6.0..2.8.0",
+      "authors": [
+        "Jess Sullivan"
+      ],
+      "license": "MIT",
+      "source": "https://github.com/Jesssullivan/quickchpl",
+      "type": "library"
+    }
+  ],
+  "StringUtils": [
+    {
+      "version": "0.1.1",
+      "createdDate": "2019-03-03T13:01:15+05:30",
+      "chplVersion": "1.18.0",
+      "source": "https://github.com/AnubhavUjjawal/Chapel-StringUtils.git"
+    }
+  ],
+  "SymArrayDmap": [
+    {
+      "version": "0.1.0",
+      "createdDate": "2022-05-18T14:48:28-07:00",
+      "chplVersion": "1.27.0",
+      "authors": [
+        "Mike Merrill"
+      ],
+      "license": "None",
+      "source": "https://github.com/bmcdonald3/SymArrayDmap"
+    }
+  ],
+  "TemplateString": [
+    {
+      "version": "0.1.0",
+      "createdDate": "2026-03-05T12:44:39-07:00",
+      "chplVersion": "2.7.0",
+      "authors": [
+        "Jade Abraham"
+      ],
+      "license": "Apache-2.0",
+      "source": "git@github.com:jabraham17/TemplateString.git",
+      "copyrightYear": "2026",
+      "type": "library"
+    }
+  ],
+  "TerminalColors": [
+    {
+      "version": "0.1.0",
+      "createdDate": "2026-04-02T20:54:24Z",
+      "chplVersion": "2.8.0",
+      "authors": [
+        "Jade Abraham"
+      ],
+      "license": "Apache-2.0",
+      "source": "git@github.com:jabraham17/TerminalColors.git",
+      "copyrightYear": "2026",
+      "type": "library"
+    }
+  ],
+  "UUID": [
+    {
+      "version": "1.0.3",
+      "createdDate": "2024-04-26T16:34:34+02:00",
+      "chplVersion": "2.0.0",
+      "authors": [
+        "Audrey MP"
+      ],
+      "license": "AGPL-3.0-or-later",
+      "source": "https://codeberg.org/Astatide/chplUUID",
+      "type": "module"
+    },
+    {
+      "version": "0.1.0",
+      "createdDate": "2019-04-03T13:09:08-07:00",
+      "chplVersion": "1.19.0",
+      "authors": [
+        "Audrey Pratt"
+      ],
+      "source": "https://github.com/ajoshpratt/chplUUID"
+    }
+  ]
+}
