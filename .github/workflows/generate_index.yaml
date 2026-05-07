@@ -1,29 +1,28 @@
 name: Generate Registry Index
 
 on:
-  pull_request:
-    types: [closed]
+  push:
     branches:
       - master
-    paths:
-      - 'Bricks/**'
 
-# Serialize runs so two merged PRs don't produce conflicting index branches.
+# Serialize runs so two pushes don't produce conflicting index.json commits.
 # cancel-in-progress: false ensures each queued run still finishes.
 concurrency:
   group: generate-registry-index
   cancel-in-progress: false
 
+# Skip if the push came from the bot itself, to avoid an infinite trigger loop.
 jobs:
   generate:
     name: Generate index.json
-    # Only run when the PR was actually merged, and not for the bot's own index PR.
-    if: github.event.pull_request.merged == true && github.event.pull_request.user.login != 'chapelautomaton'
+    if: github.actor != 'github-actions[bot]'
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
     steps:
       - uses: actions/checkout@v4
         with:
-          token: ${{ secrets.BOT_TOKEN }}
+          persist-credentials: true
           fetch-depth: 0
 
       - name: Set up Python
