@@ -71,4 +71,18 @@ jobs:
             --title "regenerate index.json" \
             --body "Automated index regeneration triggered by merge of #${{ github.event.pull_request.number }}.")
 
-          gh pr merge --auto --merge "$PR_URL"
+          # Wait for GitHub to register checks on the new PR before enabling
+          # auto-merge, to avoid the "pull request is in clean status" race.
+          echo "Waiting for checks to be registered on $PR_URL ..."
+          for i in $(seq 1 20); do
+            CHECK_COUNT=$(gh pr checks "$PR_URL" 2>/dev/null | wc -l)
+            if [ "$CHECK_COUNT" -gt 0 ]; then
+              echo "Checks registered ($CHECK_COUNT), enabling auto-merge."
+              gh pr merge --auto --merge "$PR_URL"
+              exit 0
+            fi
+            echo "No checks yet (attempt $i/20), retrying in 10s..."
+            sleep 10
+          done
+
+          echo "No checks triggered. PR will need to be merged manually."
