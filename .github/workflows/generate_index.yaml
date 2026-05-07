@@ -35,9 +35,14 @@ jobs:
       - name: Open index-update PR
         env:
           GH_TOKEN: ${{ secrets.BOT_TOKEN }}
+          BOT_TOKEN: ${{ secrets.BOT_TOKEN }}
         run: |
           git config user.name  "chapelautomaton"
           git config user.email "chapelautomaton@users.noreply.github.com"
+
+          # Explicitly embed the token in the remote URL so git push
+          # uses BOT_TOKEN regardless of the default credential helper.
+          git remote set-url origin "https://x-access-token:${BOT_TOKEN}@github.com/${{ github.repository }}.git"
 
           if git diff --quiet index.json; then
             echo "index.json is already up to date, nothing to do."
