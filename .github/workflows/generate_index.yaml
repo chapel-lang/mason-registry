@@ -32,20 +32,15 @@ jobs:
       - name: Generate index.json
         run: python3 util/generate_registry_index.py
 
-      - name: Open index-update PR
-        env:
-          GH_TOKEN: ${{ secrets.BOT_TOKEN }}
-          BOT_TOKEN: ${{ secrets.BOT_TOKEN }}
+      - name: Prepare index branch
+        id: prep
         run: |
           git config user.name  "chapelautomaton"
           git config user.email "chapelautomaton@users.noreply.github.com"
 
-          # Explicitly embed the token in the remote URL so git push
-          # uses BOT_TOKEN regardless of the default credential helper.
-          git remote set-url origin "https://x-access-token:${BOT_TOKEN}@github.com/${{ github.repository }}.git"
-
           if git diff --quiet index.json; then
             echo "index.json is already up to date, nothing to do."
+            echo "changed=false" >> "$GITHUB_OUTPUT"
             exit 0
           fi
 
@@ -53,11 +48,26 @@ jobs:
           git checkout -b "$BRANCH"
           git add index.json
           git commit -m "regenerate index.json"
-          git push origin "$BRANCH"
+          echo "changed=true" >> "$GITHUB_OUTPUT"
+          echo "branch=$BRANCH" >> "$GITHUB_OUTPUT"
 
+      - name: Push index branch
+        if: steps.prep.outputs.changed == 'true'
+        uses: ad-m/github-push-action@v1
+        with:
+          github_token: ${{ secrets.BOT_TOKEN }}
+          repository: ${{ github.repository }}
+          branch: ${{ steps.prep.outputs.branch }}
+
+      - name: Open and auto-merge PR
+        if: steps.prep.outputs.changed == 'true'
+        env:
+          GH_TOKEN: ${{ secrets.BOT_TOKEN }}
+        run: |
           PR_URL=$(gh pr create \
+            --repo "${{ github.repository }}" \
             --base master \
-            --head "$BRANCH" \
+            --head "${{ steps.prep.outputs.branch }}" \
             --title "regenerate index.json" \
             --body "Automated index regeneration triggered by merge of #${{ github.event.pull_request.number }}.")
 
