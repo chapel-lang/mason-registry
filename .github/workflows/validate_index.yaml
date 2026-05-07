@@ -1,0 +1,16 @@
+name: Validate Registry Index
+
+on:
+  pull_request:
+    paths:
+      - 'index.json'
+
+jobs:
+  validate:
+    name: Validate index.json
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Validate index.json with jq
+        run: jq '.' index.json > /dev/null
