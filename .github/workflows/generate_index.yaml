@@ -19,7 +19,7 @@ jobs:
   generate:
     name: Generate index.json
     # Only run when the PR was actually merged, and not for the bot's own index PR.
-    if: github.event.pull_request.merged == true && github.event.pull_request.user.login != 'chapelautomaton'
+    if: github.event_name == 'workflow_dispatch' || (github.event.pull_request.merged == true && github.event.pull_request.user.login != 'chapelautomaton')
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
