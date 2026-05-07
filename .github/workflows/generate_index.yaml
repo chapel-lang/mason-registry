@@ -1,29 +1,28 @@
 name: Generate Registry Index
 
 on:
-  pull_request:
-    types: [closed]
+  push:
     branches:
       - master
-    paths:
-      - 'Bricks/**'
 
-# Serialize runs so two merged PRs don't produce conflicting index branches.
+# Serialize runs so two pushes don't produce conflicting index.json commits.
 # cancel-in-progress: false ensures each queued run still finishes.
 concurrency:
   group: generate-registry-index
   cancel-in-progress: false
 
+# Skip if the push came from the bot itself, to avoid an infinite trigger loop.
 jobs:
   generate:
     name: Generate index.json
-    # Only run when the PR was actually merged, and not for the bot's own index PR.
-    if: github.event.pull_request.merged == true && github.event.pull_request.user.login != 'chapelautomaton'
+    if: github.actor != 'github-actions[bot]'
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
     steps:
       - uses: actions/checkout@v4
         with:
-          token: ${{ secrets.BOT_TOKEN }}
+          persist-credentials: true
           fetch-depth: 0
 
       - name: Set up Python
@@ -32,28 +31,14 @@ jobs:
       - name: Generate index.json
         run: python3 util/generate_registry_index.py
 
-      - name: Open index-update PR
-        env:
-          GH_TOKEN: ${{ secrets.BOT_TOKEN }}
+      - name: Commit and push index.json
         run: |
-          git config user.name  "chapelautomaton"
-          git config user.email "chapelautomaton@users.noreply.github.com"
-
-          if git diff --quiet index.json; then
-            echo "index.json is already up to date, nothing to do."
-            exit 0
-          fi
-
-          BRANCH="bot/regenerate-index-${{ github.run_id }}"
-          git checkout -b "$BRANCH"
+          git config user.name  "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add index.json
-          git commit -m "regenerate index.json"
-          git push origin "$BRANCH"
-
-          PR_URL=$(gh pr create \
-            --base master \
-            --head "$BRANCH" \
-            --title "regenerate index.json" \
-            --body "Automated index regeneration triggered by merge of #${{ github.event.pull_request.number }}.")
-
-          gh pr merge --auto --merge "$PR_URL"
+          if git diff --cached --quiet; then
+            echo "index.json is already up to date, nothing to commit."
+          else
+            git commit -m "regenerate index.json"
+            git push
+          fi
