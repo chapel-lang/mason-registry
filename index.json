@@ -235,6 +235,20 @@
       "type": "library"
     }
   ],
+  "SciChap": [
+    {
+      "version": "0.1.0",
+      "createdDate": "2026-05-09T07:45:00-05:00",
+      "chplVersion": "2.8.0",
+      "authors": [
+        "Jared Magnusson"
+      ],
+      "license": "BSD-3-Clause",
+      "source": "git@github.com:jmag722/SciChap.git",
+      "copyrightYear": "2025",
+      "type": "library"
+    }
+  ],
   "StringUtils": [
     {
       "version": "0.1.1",
