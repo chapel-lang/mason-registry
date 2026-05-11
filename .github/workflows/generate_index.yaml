@@ -2,12 +2,12 @@ name: Generate Registry Index
 
 on:
   workflow_dispatch:
-  pull_request:
-    types: [closed]
+  push:
     branches:
       - master
     paths:
       - 'Bricks/**'
+      - 'util/generate_registry_index.py'
 
 # Serialize runs so two merged PRs don't produce conflicting index branches.
 # cancel-in-progress: false ensures each queued run still finishes.
@@ -18,13 +18,10 @@ concurrency:
 jobs:
   generate:
     name: Generate index.json
-    # Only run when the PR was actually merged, and not for the bot's own index PR.
-    if: github.event_name == 'workflow_dispatch' || (github.event.pull_request.merged == true && github.event.pull_request.user.login != 'chapelautomaton')
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
         with:
-          token: ${{ secrets.BOT_TOKEN }}
           fetch-depth: 0
 
       - name: Set up Python
@@ -70,7 +67,7 @@ jobs:
             --base master \
             --head "${{ steps.prep.outputs.branch }}" \
             --title "regenerate index.json" \
-            --body "Automated index regeneration triggered by merge of #${{ github.event.pull_request.number }}.")
+            --body "Automated index regeneration triggered by commit #${{ github.sha }}")
 
           # Wait for GitHub to register checks on the new PR before enabling
           # auto-merge, to avoid the "pull request is in clean status" race.
