@@ -1,0 +1,16 @@
+
+[brick]
+name = "Parquet"
+version = "0.1.1"
+type = "library"
+chplVersion = "2.8.0..2.9.0"
+source = "https://github.com/e-kayrakli/Parquet"
+authors = ["Engin Kayraklioglu", "Shreyas Khandekar", "Ben Harshbarger"]
+license = "Apache-2.0"
+copyrightYear = "2026"
+
+[dependencies]
+
+[system]
+arrow = "19.0.1"
+parquet = "19.0.1"
