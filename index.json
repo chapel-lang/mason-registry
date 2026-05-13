@@ -184,6 +184,22 @@
       "source": "https://gitlab.com/npadmana/numpylike.git"
     }
   ],
+  "Parquet": [
+    {
+      "version": "0.1.1",
+      "createdDate": "2026-05-13T20:34:32Z",
+      "chplVersion": "2.8.0..2.9.0",
+      "authors": [
+        "Engin Kayraklioglu",
+        "Shreyas Khandekar",
+        "Ben Harshbarger"
+      ],
+      "license": "Apache-2.0",
+      "source": "https://github.com/e-kayrakli/Parquet",
+      "copyrightYear": "2026",
+      "type": "library"
+    }
+  ],
   "Pathlib": [
     {
       "version": "0.3.0",
