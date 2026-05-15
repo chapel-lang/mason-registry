@@ -9,6 +9,7 @@ jobs:
     runs-on: ubuntu-latest
     outputs:
       package_path: ${{ steps.find_pkg.outputs.package_path }}
+      is_deletion: ${{ steps.find_pkg.outputs.is_deletion }}
     steps:
       - uses: actions/checkout@v6
         with:
@@ -19,13 +20,20 @@ jobs:
         run: |
           # Parses the last merge commit, getting the most recent package added to the registry
           echo "Finding the last modified package in Bricks directory..."
-          LAST_MODIFIED_PACKAGE=$(git diff --name-only HEAD~1 HEAD | grep -E '.*\.toml' | head -n 1)
+          LAST_MODIFIED_PACKAGE=$(git diff --name-only HEAD~1 HEAD | grep -E '^Bricks/.*\.toml' | head -n 1)
           if [ -z "$LAST_MODIFIED_PACKAGE" ]; then
             echo "No package found in the last commit. Exiting."
             exit 0
           fi
           echo "Last modified package: $LAST_MODIFIED_PACKAGE"
           echo "package_path=$LAST_MODIFIED_PACKAGE" >> $GITHUB_OUTPUT
+          # Check if the file was deleted (package revocation)
+          if [ ! -f "$LAST_MODIFIED_PACKAGE" ]; then
+            echo "Package file was deleted (revocation detected)."
+            echo "is_deletion=true" >> $GITHUB_OUTPUT
+          else
+            echo "is_deletion=false" >> $GITHUB_OUTPUT
+          fi
   checks_for_package:
     name: Check Package
     needs: find_package
@@ -40,7 +48,9 @@ jobs:
         run: |
           bash ./util/checkTomls.bash
       - name: CI Check package
+        if: needs.find_package.outputs.is_deletion != 'true'
+        env:
+          PACKAGE_TOML: ${{ needs.find_package.outputs.package_path }}
         run: |
-          package_toml=${{ needs.find_package.outputs.package_path }}
-          echo "Running CI checks for package: $package_toml"
-          bash ./util/runMasonCI.bash "$package_toml"
+          echo "Running CI checks for package: $PACKAGE_TOML"
+          bash ./util/runMasonCI.bash "$PACKAGE_TOML"
